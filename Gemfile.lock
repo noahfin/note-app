@@ -174,7 +174,6 @@ DEPENDENCIES
   mini_backtrace
   minitest
   minitest-reporters
-  rails (= 4.1.6)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   simple_form
@@ -183,3 +182,6 @@ DEPENDENCIES
   summernote-rails
   turbolinks
   uglifier (>= 1.3.0)
+
+BUNDLED WITH
+   1.11.2

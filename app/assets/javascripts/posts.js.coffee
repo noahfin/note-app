@@ -12,11 +12,11 @@ $ ->
   summer_note.summernote
     # to set options
     height:500
-    lang: 'ko-KR'
+    lang: 'ENG'
     codemirror:
       lineNumbers: true
       tabSize: 2
-      theme: "solarized light"
+      theme: "solarized dark"
 
   # to set code for summernote
   summer_note.code summer_note.val()

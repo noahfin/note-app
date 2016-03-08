@@ -32,6 +32,20 @@
 //= require codemirror/modes/slim
 //= require codemirror/modes/php
 //= require summernote
-//= require lang/summernote-ko-KR
 //= require_tree .
 //= require turbolinks
+
+$("document").ready(function(){
+ console.log("in document ready")
+
+
+  
+
+})
+
+
+var helloButton = function () {
+      // invoke insertText method with 'hello' on editor module.
+      console.log("cool")
+      context.invoke('editor.insertText', 'hello');
+    }
