@@ -12,10 +12,10 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.input :title, input_html: { class: 'form-control'} %>
+    <%= f.input :title, placeholder: 'Title', :hide_label => true, input_html: { class: 'form-control'} %>
   </div>
   <div class="form-group">
-    <%= f.input :content, class: 'summernote' %>
+    <%= f.input :content, hide_label: true, class: 'summernote' %>
   </div>
   <div class="actions">
     <%= f.submit class: 'btn btn-default' %>

@@ -44,8 +44,3 @@ $("document").ready(function(){
 })
 
 
-var helloButton = function () {
-      // invoke insertText method with 'hello' on editor module.
-      console.log("cool")
-      context.invoke('editor.insertText', 'hello');
-    }

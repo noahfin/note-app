@@ -11,7 +11,7 @@ $ ->
   # to call summernote editor
   summer_note.summernote
     # to set options
-    height:500
+    height:400
     lang: 'ENG'
     codemirror:
       lineNumbers: true

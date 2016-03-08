@@ -1,4 +1,127 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<style type="text/css">
+.intro {
+    display: table;
+    width: 100%;
+    height: 400px;
+    padding: 100px 0;
+    text-align: center;
+    color: #fff;
+    background-image: url("/assets/not-bg.jpg");
+    background-position: 0px -20px, center;
+     background-repeat: no-repeat;
+    background-color: #101010;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+#home-drop{
+	color: #de5a51;
+}
+.center{
+	margin-top: 100px;
+	margin-bottom: 30px;
+}
+.btn-index {
+    padding: 14px 24px;
+    border: 0 none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+ 
+.btn-index :focus, .btn-index :active:focus, .btn-index .active:focus {
+    outline: 0 none;
+}
+ 
+.btn-index {
+    background: #de5a51;
+    color: #ffffff;
+}
+ 
 
-<p><%= link_to "Posts", posts_path %></p>
+ 
+.btn-index :active, .btn-primary.active {
+    background:  #777;
+    box-shadow: none;
+}
+
+.btn-index  {
+  border-radius:0;
+}
+
+// end of button styles
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.info_container{
+	margin: auto;
+}
+.info { 
+  
+	margin: 0 auto; 
+display: inline;}
+
+ul.info li {
+  display: block;
+  width: 266px;
+  float: left;
+  margin: 20px 0;
+  padding: 20px;
+  margin-left: 20px;
+  line-height: 1.6em;
+}
+
+ul.info li strong {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
+  display: block;
+  margin: 12px 0;
+  color: #de5a51;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #de5a51;
+}
+ul.info li p {
+	font-size: 21px;
+	}
+.info_container{
+	max-width: 80%;
+}
+.nav-bar{
+	background-color: #000;
+}
+
+
+</style>
+
+<div class= "intro">
+	<h1 class="center ">Welcom to Co <b>No</b>&nbsp;<span class="fa fa-tint"	></span></h1>
+<%= button_to('Sign Up!', '/signup',method: "get", class:'btn-danger btn-index')  %>
+
+	<!-- btn-danger -->
+</div>
+<div class= "container">
+  <div class="info_container">
+        <ul class="info clearfix">
+          <li class="slide-3">
+            <strong>Who I Am</strong>
+          Chillwave letterpress green juice selvage listicle. VHS authentic selfies, polaroid pabst PBR&amp;B venmo direct trade cray cred roof party pinterest jean shorts.
+          </li>
+          <li >
+            <strong>What I Do</strong>
+          3 wolf moon roof party cred chia, hammock scenester whatever master cleanse fanny pack readymade. IPhone VHS listicle fanny pack.
+          </li>
+          <li >
+            <strong>Where I Do It</strong>
+          Jean shorts locavore tacos normcore fap next level. Williamsburg bushwick yr polaroid, roof party gentrify asymmetrical.
+          </li>
+        </ul>
+      </div>
+     </div>
+
+
+
