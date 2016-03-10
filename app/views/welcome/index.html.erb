@@ -121,7 +121,7 @@ ul.info li p {
 
 <div class= "intro">
 	<h1 class="center ">Welcom to Co <b>No</b>&nbsp;<span class="fa fa-tint"	></span></h1>
-<%= button_to('Sign Up!', '/signup',method: "get", class:'btn-danger btn-index')  %>
+   <button type="button" class="btn-danger btn-index" data-toggle="modal" data-target="#myModal">Sign Up!</button>
 
 	<!-- btn-danger -->
 </div>
@@ -143,6 +143,41 @@ ul.info li p {
         </ul>
       </div>
      </div>
+<!-- 
+     Model section -->
 
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Create Account!</h4>
+        </div>
+        <div class="modal-body">
+          <%= bootstrap_form_for :user, :html => { :id=> "identicalForm"}, url: '/users' do |f| %>
+             <%= f.text_field :name,autofocus: true, placeholder: 'Name', hide_label: true %>
+             <%= f.text_field :email,  placeholder: 'Email', hide_label: true %>
+             <%= f.password_field :password,  placeholder: 'Password' , hide_label: true, id:"password" %>
+             <%= f.password_field :password_confirmation,  placeholder: 'Password confirmation', hide_label: true, id:"confirm_password" %>
+        
+          <%= f.submit "Create Account", class: " btn btn-info" %>
+        <% end %>
+        </div>
+        <div class="modal-footer">
+         
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+
+
+ 
 
 

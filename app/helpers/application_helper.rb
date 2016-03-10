@@ -1,4 +1,5 @@
 module ApplicationHelper
+  
   def alert_box(kind="warning", title="Warning!", message="Warnings occurred")
     content_tag(:div, class:"alert alert-#{kind} alert-dismissible", role: "alert") do
       concat(content_tag(:button, type: 'button', class: 'close', data: {dismiss: 'alert'}) do
@@ -10,4 +11,6 @@ module ApplicationHelper
       concat message
     end
   end
+
+  
 end
