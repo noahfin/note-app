@@ -9,7 +9,7 @@
     background-image: url("/assets/not-bg.jpg");
     background-position: 0px -20px, center;
      background-repeat: no-repeat;
-    background-color: #101010;
+    background-color: #fff;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -19,7 +19,7 @@
 	color: #de5a51;
 }
 .center{
-	margin-top: 100px;
+	margin-top: 70px;
 	margin-bottom: 30px;
 }
 .btn-index {
@@ -50,7 +50,7 @@
   border-radius:0;
 }
 
-// end of button styles
+/*end of button styles*/
 .clearfix:after {
   content: "";
   display: table;
@@ -94,6 +94,27 @@ ul.info li p {
 .nav-bar{
 	background-color: #000;
 }
+
+@media only screen and (max-width: 800px) {
+  ul.info li, ul.info li p {
+     width: 100%;
+     padding-left: 0;
+      margin-left: 0;
+    }
+    ul.info{
+      padding-left: 0;
+
+    }
+}
+@media only screen and (max-width: 1004px) {
+  ul.info:nth-second-child {
+     width: 100%;
+     padding-left: 0;
+      margin-left: 0;
+    }
+    
+}
+
 
 
 </style>
