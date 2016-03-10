@@ -31,5 +31,30 @@
 
 <br>
 
-<%= link_to 'New Post', new_post_path, class: 'btn btn-default' %>
+  <button type="button" class="btn btn-info btn-md btn-left" data-toggle="modal" data-target="#myModal">New Post</button>
 </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Save Note As</h4>
+        </div>
+        <div class="modal-body">
+        <%= bootstrap_form_for(@post) do |f| %>
+          <%= f.text_field :title%>
+        
+          <%= f.submit "Submit", class: " btn btn-info" %>
+        <% end %>
+        </div>
+        <div class="modal-footer">
+         
+        </div>
+      </div>
+      
+    </div>
+  </div>
