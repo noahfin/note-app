@@ -1,11 +1,18 @@
+
+    <div class="container buffer-top">
+    <%= alert_box "info", "Info!", notice if flash.any? %>
+
+    
+    </div><!-- /container -->
 <div class="container-small">
-<h2>Listing posts</h2>
+
+<h2 class="color-p">Listing posts</h2>
 
 <table class="table">
   <thead>
     <tr>
-      <th>Title</th>
-      <th class='col-md-3'>Actions</th>
+      <th class="color-p">Title</th>
+      <th class='col-md-3 color-p'>Actions</th>
     </tr>
   </thead>
 
@@ -13,7 +20,7 @@
   <% if @posts.any? %>
     <% @posts.each do |post| %>
       <tr>
-        <td><%= post.title %></td>
+        <td class="color-header"><%= post.title %></td>
         <td>
           <%= link_to fa_icon('eye'), post %> |
           <%= link_to fa_icon('edit'), edit_post_path(post) %> |
@@ -31,7 +38,7 @@
 
 <br>
 
-  <button type="button" class="btn btn-info btn-md btn-left" data-toggle="modal" data-target="#myModal">New Post</button>
+  <button type="button" class="btn btn-posts btn-md btn-left" data-toggle="modal" data-target="#myModal">New Post</button>
 </div>
 
   <!-- Modal -->
@@ -48,7 +55,7 @@
         <%= bootstrap_form_for(@post) do |f| %>
           <%= f.text_field :title%>
         
-          <%= f.submit "Submit", class: " btn btn-info" %>
+          <%= f.submit "Submit", class: " btn btn-default" %>
         <% end %>
         </div>
         <div class="modal-footer">

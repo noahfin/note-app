@@ -18,15 +18,67 @@ body {padding: 3em 0;}
 .buffer{
 	height: 30px;
 }
+.buffer-top{
+ margin-top: 20px;
+}
  .btn-info{
- 	background: #428bca;
+ 
 
 
  	}
  	.btn-left{
- 		 margin-left: 7px;
+ 		 margin-left: 5px;
  	}
-// .main-custom{
-// 	background: #000;
-// 	border: none;
-// }
+ 	.btn-posts{
+ 		color: #fff;
+ 		background:  #de5a51;
+ 	}
+ 	.container-form{
+
+ 		margin: 0 auto;
+ 		margin-top: 20px;
+ 		width: 300px;
+ 		
+ 	}
+ 	.container-form h1{
+ 		color: #777;
+ 	}
+ 	.search-form {
+    border-radius: 30px;
+    	width: 105%;
+    margin-left: 8px;
+ }
+  	.inputs{
+ 		width: 90%;
+ 	}
+ 	.or-hr{
+ 		
+ 	}
+ 	.btn-s{
+ 		background:  #249991;
+
+ 		width: 114%;
+ 	}
+ .panel-heading{
+ 	background: #e9e9e9
+ }
+ .form-horizontal{
+ 	margin-top: 50px;
+ 	padding:10px;
+ }
+ .col-sm-10{
+ margin-left: 12px;
+ }
+ .color-p{color: #60646D;}
+  
+ .color-header, .fa-eye , .fa-edit, .fa-close{
+ 	color:   #249991;
+ }
+ // input:focus {background: lightblue;}
+
+@media screen and (max-width: 770px) {
+    	.search-form {
+    width: 90%;
+ }
+}
+
