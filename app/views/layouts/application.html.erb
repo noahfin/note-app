@@ -27,7 +27,8 @@
 	          <a href="#" class="dropdown-toggle" id="home-drop"data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings <span class="caret"></span></a>
 	          <ul id="drop" class="dropdown-menu">
 	            <li><%= link_to "Posts", posts_path %></li>
-	             <li></li> 
+	             <li><%= link_to "login", login_path %></li>
+	             <li> <a id="edit-account" data-toggle="modal" data-target="#editAccount"> <span class=" fa fa-edit"></span>Edit Account</a></li> 
 	            <li role="separator" class="divider"></li>
 	            <li><a href="/search"> <span class=" fa fa-search">Seach for notes</span></a></li>          </ul>
 	        </li>
@@ -37,6 +38,34 @@
 	  </div><!-- /.container-fluid -->
 	 
 	</nav>
+ <div class="modal fade" id="editAccount" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Create Account!</h4>
+        </div>
+        <div class="modal-body">
+          <%= bootstrap_form_for :user, :html => { :method=> "PATCH"}, url: '/users/edit'  do |f| %>
+        <%= f.text_field :name,autofocus: true, placeholder: 'Name', hide_label: true, id:"name_edit"  %>
+        <%= f.text_field :email,  placeholder: 'Password', hide_label: true , id:"email_edit" %>
+        <%= f.password_field :password,  placeholder: 'Enter the password you want to use' , hide_label: true, id:"password_edit"  %> 
+       <%= f.password_field :password_confirmation,  placeholder: 'Password confirmation', hide_label: true, id:"confirm_password_edit" %>
+
+        
+          <%= f.submit "Update", class: " btn btn-info" %>
+        <% end %>
+        </div>
+        <div class="modal-footer">
+         
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
 
 
 

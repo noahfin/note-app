@@ -27,6 +27,7 @@ group :test do
   gem "mini_backtrace"
   gem 'rspec-rails', '~> 3.0'
   gem 'capybara'
+  gem "factory_girl_rails", "~> 4.0" 
 end
 
 gem 'bootstrap-sass'

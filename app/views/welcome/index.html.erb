@@ -1,5 +1,6 @@
 <style type="text/css">
 .intro {
+
     display: table;
     width: 100%;
     height: 400px;
@@ -40,7 +41,6 @@
 }
  
 
- 
 .btn-index :active, .btn-primary.active {
     background:  #777;
     box-shadow: none;
@@ -59,10 +59,9 @@
 .info_container{
 	margin: auto;
 }
-.info { 
-  
+.info {   
 	margin: 0 auto; 
-display: inline;}
+  display: inline;}
 
 ul.info li {
   display: block;
@@ -118,11 +117,13 @@ ul.info li p {
 
 
 </style>
-  <div class="container">
-    <%= alert_box "info", "Info!", notice if flash.any? %>   
-    </div><!-- /container -->
+ 
 
 <div class= "intro">
+   <div class="container">
+ 
+    <%= alert_box "danger", "Info!", notice if flash.any? %>   
+    </div><!-- /container -->
 	<h1 class="center ">Welcom to Co <b>No</b>&nbsp;<span class="fa fa-tint"	></span></h1>
    <button type="button" class="btn-danger btn-index" data-toggle="modal" data-target="#myModal">Sign Up!</button>
 
@@ -151,8 +152,6 @@ ul.info li p {
 <!-- 
      Model section -->
 
-
-
   <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
@@ -165,10 +164,10 @@ ul.info li p {
         </div>
         <div class="modal-body">
           <%= bootstrap_form_for :user, :html => { :id=> "identicalForm"}, url: '/users' do |f| %>
-             <%= f.text_field :name,autofocus: true, placeholder: 'Name', hide_label: true %>
-             <%= f.text_field :email,  placeholder: 'Email', hide_label: true %>
-             <%= f.password_field :password,  placeholder: 'Password' , hide_label: true, id:"password" %>
-             <%= f.password_field :password_confirmation,  placeholder: 'Password confirmation', hide_label: true, id:"confirm_password" %>
+             <%= f.text_field :name,autofocus: true, placeholder: 'Name', hide_label: true, id:"name_create"  %>
+             <%= f.text_field :email,  placeholder: 'Email', hide_label: true, id:"email_create"  %>
+             <%= f.password_field :password,  placeholder: 'Password' , hide_label: true, id:"password_create" %>
+             <%= f.password_field :password_confirmation,  placeholder: 'Password confirmation', hide_label: true, id:"confirm_password_create" %>
         
           <%= f.submit "Create Account", class: " btn btn-info" %>
         <% end %>

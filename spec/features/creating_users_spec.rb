@@ -5,10 +5,10 @@ feature 'Creating users accounts' do
 	def create_a_user
 		visit '/'
 		click_button 'Sign Up!'
-		fill_in "Name", with: 'Noah'
-		fill_in "Email", with: "1@example.com"
-		fill_in "Password" , with: "password"
-		fill_in "Password confirmation", with: "password"
+		fill_in "name_create", with: 'Noah'
+		fill_in "email_create", with: "1@example.com"
+		fill_in "password_create" , with: "password"
+		fill_in "confirm_password_create", with: "password"
 		click_button 'Create Account'
 		
 	end
@@ -16,20 +16,89 @@ feature 'Creating users accounts' do
 		create_a_user
 		expect(page).to have_content("Your account was successfuly created")
 	end
+ end
 
-	context 'not saving invalid user' do
+	feature 'not saving invalid user' do
   it 'when passwords mismatch' do
     visit '/'
 		click_button 'Sign Up!'
 
-    fill_in 'Email', with: 'xajler@gmail.com'
-    fill_in 'Password', with: 'x1234567'
-    fill_in 'Password confirmation', with: '55'
-    fill_in 'Name', with: 'Kornelije Sajler'
-    click_button 'Sign Up'
+    fill_in 'email_create', with: 'xajler@gmail.com'
+    fill_in 'password_create', with: 'x1234567'
+    fill_in 'confirm_password_create', with: '55'
+    fill_in 'name_create', with: 'Kornelije Sajler'
+    click_button 'Create Account'
      # url = URI.parse(current_url)
     expect(current_url).to eq ("http://www.example.com/")
-    # expect(page).to have_content( "Info! Passwords did not match" )
+     expect(page).to have_content( "Info! Password confirmation doesn't match Password" )
   end
-end
+
+  it 'wont let a user siginup when their email is blank'do 
+	  visit '/'
+	  fill_in 'name_create', with: 'Becky'
+	  fill_in 'email_create' , with: ' '
+	  fill_in 'password_create', with: "12345678"
+	  fill_in 'confirm_password_create', with: '12345678'
+	  click_button 'Create Account'
+	  expect(current_url).to eq ("http://www.example.com/")
+    expect(page).to have_content( "Email can't be blank" )
+	end
+
+  it 'wont let a user siginup when their password is blank'do 
+	  visit '/'
+	  fill_in 'name_create', with: 'Becky'
+	  fill_in 'email_create' , with: 'jojothecode@gmail.com'
+	  fill_in 'password_create', with: ""
+	  fill_in 'confirm_password_create', with: 'z2123593'
+	  click_button 'Create Account'
+	  expect(current_url).to eq ("http://www.example.com/")
+    expect(page).to have_content( "Password can't be blank" )
+	end
+
+	it 'wont let a user siginup when their name is blank'do 
+	  visit '/'
+	  fill_in 'name_create', with: ''
+	  fill_in 'email_create' , with: 'jojothecode@gmail.com'
+	  fill_in 'password_create', with: "z2123593"
+	  fill_in 'confirm_password_create', with: 'z2123593'
+	  click_button 'Create Account'
+	  expect(current_url).to eq ("http://www.example.com/")
+    expect(page).to have_content( "Name can't be blank" )
+	end
+ 
+  scenario "can't signup when email is not unique" do
+    user = FactoryGirl.create(:user, name: "Noah Finnerman", email: "nono@gmail.com", password: "toad123", password_confirmation: "toad123" )
+      visit '/'
+	  fill_in 'name_create', with: 'nono'
+	  fill_in 'email_create' , with: 'nono@gmail.com'
+	  fill_in 'password_create', with: "z2123593"
+	  fill_in 'confirm_password_create', with: 'z2123593'
+	  click_button 'Create Account'
+	  expect(page).to have_content('Email has already been taken')
+  end
+  it 'displays a message when name is too short'do 
+	  visit '/'
+	  fill_in 'name_create', with: 'Joe'
+	  fill_in 'email_create' , with: 'jojothecode@gmail.com'
+	  fill_in 'password_create', with: "z2"
+	  fill_in 'confirm_password_create', with: 'z2'
+	  click_button 'Create Account'
+	  expect(current_url).to eq ("http://www.example.com/")
+    expect(page).to have_content( "Password is too short (minimum is 6 characters)" )
+	end
+	scenario "Wont let a user edit an account if they are not signin" do
+ 
+      visit '/logout'
+      click_link 'Settings'
+   find('#edit-account', :text => 'Edit Account').click
+	  fill_in 'name_edit', with: 'nono'
+	  fill_in 'email_edit' , with: 'nono@gmail.com'
+	  fill_in 'password_edit', with: "z2123593"
+	  fill_in 'confirm_password_edit', with: 'z2123593'
+	  click_button 'Update'
+	  expect(current_url).to eq ("http://www.example.com/login")
+    expect(page).to have_content( "You need to signin first" )
+  end
+
+
 end
