@@ -1,4 +1,13 @@
+<nav class="side-nav">
+      <img class="user-avater" src="<%= gravatar_url if current_user %>"  title="source: imgur.com" alt="user avater" height="40" width="40">
 
+  <ul>
+    <li><a href="#" class=""><i class="fa fa-folder-o"></i></a></li>
+     <li><a href="#" class=""><i class="fa fa-pencil-square-o"></i></a></li>
+    <li><a href="#" class=""><i class="fa fa-picture-o"></i></a></li>
+    <li><a href="#" class=""><i class="fa fa-search"></i></i></a></li>
+  </ul>
+</nav>
     <div class="container buffer-top">
     <%= alert_box "info", "Info!", notice if flash.any? %>
 

@@ -12,5 +12,15 @@ module ApplicationHelper
     end
   end
 
+  def gravatar_url()
+        @email = User.find(current_user.id)
+
+        @stripped_email = @email['email'].strip
+        @downcased_email = @stripped_email.downcase
+        hash = Digest::MD5.hexdigest(@downcased_email)
+        'http://gravatar.com/avatar/' + hash.to_s
+        
+      end
+
   
 end

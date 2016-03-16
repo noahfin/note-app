@@ -21,10 +21,34 @@ body {padding: 3em 0;}
 .buffer-top{
  margin-top: 20px;
 }
- .alert {
-
+ .user-avater{
+    border-radius: 20px;
+    margin-left: 12.5px;
 
  	}
+    .side-nav{
+        position: fixed;
+        padding-top: 30px;
+        background: #555;
+        height: 900px;
+        width: 70px;
+    }
+    .side-nav ul{
+        list-style: none;
+        padding-top: 30px;
+
+
+    }
+    .side-nav ul > li{
+      
+        font-size: 30px;
+    }
+    .side-nav li i{
+      color: white;
+      text-align: center;
+      padding-top: 60px;
+     margin-left: -20px;
+    }
  	.btn-left{
  		 margin-left: 5px;
  	}
