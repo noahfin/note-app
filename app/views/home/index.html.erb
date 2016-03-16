@@ -1,0 +1,67 @@
+
+    <div class="container buffer-top">
+    <%= alert_box "info", "Info!", notice if flash.any? %>
+
+    
+    </div><!-- /container -->
+<div class="container-small">
+
+<h2 class="color-p">Listing posts</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th class="color-p">Title</th>
+      <th class='col-md-3 color-p'>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% if @posts.any? %>
+    <% @posts.each do |post| %>
+      <tr>
+        <td class="color-header"><%= post.title %></td>
+        <td>
+          <%= link_to fa_icon('eye'), post %> |
+          <%= link_to fa_icon('edit'), edit_post_path(post) %> |
+          <%= link_to fa_icon('close'), post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  <% else %>
+    <tr>
+      <td colspan="2" style='background-color: #eaeaea;height:5em;line-height:5em;text-align:center;'>No entries</td>
+    </tr>
+  <% end %>
+
+  </tbody>
+</table>
+
+<br>
+
+  <button type="button" class="btn btn-posts btn-md btn-left" data-toggle="modal" data-target="#myModal">New Post</button>
+</div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Save Note As</h4>
+        </div>
+        <div class="modal-body">
+        <%= bootstrap_form_for(@post) do |f| %>
+          <%= f.text_field :title%>
+        
+          <%= f.submit "Submit", class: " btn btn-default" %>
+        <% end %>
+        </div>
+        <div class="modal-footer">
+         
+        </div>
+      </div>
+      
+    </div>
+  </div>

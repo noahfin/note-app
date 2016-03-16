@@ -16,7 +16,7 @@ feature 'Creating users accounts' do
 		create_a_user
 		expect(page).to have_content("Your account was successfuly created")
 	end
- end
+ 
 
 	feature 'not saving invalid user' do
   it 'when passwords mismatch' do
@@ -32,7 +32,9 @@ feature 'Creating users accounts' do
     expect(current_url).to eq ("http://www.example.com/")
      expect(page).to have_content( "Info! Password confirmation doesn't match Password" )
   end
+end
 
+	
   it 'wont let a user siginup when their email is blank'do 
 	  visit '/'
 	  fill_in 'name_create', with: 'Becky'
@@ -105,8 +107,6 @@ feature 'Creating users accounts' do
 	  fill_in 'password_field', with: "toad123"
 	  click_button 'Sign in'
     find('#edit-account', :text => 'Edit Account').click
-    # find_field('email_edit').value.should == ('nono@gmail.com')
-    # find_field('name_edit').value.should == ('Noah Finnerman')
 	  fill_in 'name_edit', with: 'nono'
 	  fill_in 'email_edit' , with: 'nono@gmail.com'
 	  fill_in 'password_edit', with: "z2123593"
@@ -115,18 +115,19 @@ feature 'Creating users accounts' do
 	   expect(page).to have_content( 'Info! Your account was successfully updated')
   end
   scenario "displays name and eamil when editing account" do
-    user = FactoryGirl.create(:user, name: "Noah Finnerman", email: "nono@gmail.com", password: "toad123", password_confirmation: "toad123" )
+    user = FactoryGirl.create(:user, name: "Noah Finnerman", email: "no@gmail.com", password: "toad123", password_confirmation: "toad123" )
     visit '/login'
-    fill_in 'email_field' , with: 'nono@gmail.com'
+    fill_in 'email_field' , with: 'no@gmail.com'
 	  fill_in 'password_field', with: "toad123"
 	  click_button 'Sign in'
     find('#edit-account', :text => 'Edit Account').click
-    expect(find("#email_edit", :visible => true).value).to eq 'nono@gmail.com'
+    expect(find("#email_edit", :visible => true).value).to eq 'no@gmail.com'
     expect(find("#name_edit", :visible => true).value).to eq 'Noah Finnerman' 
 	
   end
   scenario "user is not able to change their email" do
-    user = FactoryGirl.create(:user, name: "Noah Finnerman", email: "nono@gmail.com", password: "toad123", password_confirmation: "toad123" )
+    user = FactoryGirl.create(:user, name: "Noah Finnerman", email: 'nono@gmail.com', password: "toad123", password_confirmation: "toad123" )
+   
     visit '/login'
     fill_in 'email_field' , with: 'nono@gmail.com'
 	  fill_in 'password_field', with: "toad123"
@@ -153,7 +154,8 @@ feature 'Creating users accounts' do
 	  expect(page).to have_content("You are now login")
 	end
 	scenario "user recives a message when they login" do
-    user = FactoryGirl.create(:user, name: "Noah Finnerman", email: "nono@gmail.com", password: "toad123", password_confirmation: "toad123" )
+       user = FactoryGirl.create(:user, name: "Noah Finnerman", email: 'nono@gmail.com', password: "toad123", password_confirmation: "toad123" )
+    visit '/logout'
     visit '/login'
     fill_in 'email_field' , with: 'nono@gmail.com'
 	  fill_in 'password_field', with: "toad123"

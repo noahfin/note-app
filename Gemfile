@@ -23,15 +23,16 @@ group :development do
 end
 
 group :test do
-  gem "minitest"
+  gem 'minitest'
   gem "mini_backtrace"
   gem 'rspec-rails', '~> 3.0'
   gem 'capybara'
-  gem "factory_girl_rails", "~> 4.0" 
+  gem 'factory_girl_rails', '~> 4.0' 
+  gem 'database_cleaner'
 end
 
 gem 'bootstrap-sass'
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
 gem 'simple_form'
 gem 'summernote-rails'
 gem 'codemirror-rails'
