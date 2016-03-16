@@ -87,10 +87,9 @@ feature 'Creating users accounts' do
     expect(page).to have_content( "Password is too short (minimum is 6 characters)" )
 	end
 	scenario "Wont let a user edit an account if they are not signin" do
- 
-      visit '/logout'
-      click_link 'Settings'
-   find('#edit-account', :text => 'Edit Account').click
+    visit '/logout'
+    click_link 'Settings'
+    find('#edit-account', :text => 'Edit Account').click
 	  fill_in 'name_edit', with: 'nono'
 	  fill_in 'email_edit' , with: 'nono@gmail.com'
 	  fill_in 'password_edit', with: "z2123593"
@@ -99,6 +98,68 @@ feature 'Creating users accounts' do
 	  expect(current_url).to eq ("http://www.example.com/login")
     expect(page).to have_content( "You need to signin first" )
   end
+  scenario "valid user update" do
+    user = FactoryGirl.create(:user, name: "Noah Finnerman", email: "nono@gmail.com", password: "toad123", password_confirmation: "toad123" )
+    visit '/login'
+    fill_in 'email_field' , with: 'nono@gmail.com'
+	  fill_in 'password_field', with: "toad123"
+	  click_button 'Sign in'
+    find('#edit-account', :text => 'Edit Account').click
+    # find_field('email_edit').value.should == ('nono@gmail.com')
+    # find_field('name_edit').value.should == ('Noah Finnerman')
+	  fill_in 'name_edit', with: 'nono'
+	  fill_in 'email_edit' , with: 'nono@gmail.com'
+	  fill_in 'password_edit', with: "z2123593"
+	  fill_in 'confirm_password_edit', with: 'z2123593'
+	  click_button 'Update'
+	   expect(page).to have_content( 'Info! Your account was successfully updated')
+  end
+  scenario "displays name and eamil when editing account" do
+    user = FactoryGirl.create(:user, name: "Noah Finnerman", email: "nono@gmail.com", password: "toad123", password_confirmation: "toad123" )
+    visit '/login'
+    fill_in 'email_field' , with: 'nono@gmail.com'
+	  fill_in 'password_field', with: "toad123"
+	  click_button 'Sign in'
+    find('#edit-account', :text => 'Edit Account').click
+    expect(find("#email_edit", :visible => true).value).to eq 'nono@gmail.com'
+    expect(find("#name_edit", :visible => true).value).to eq 'Noah Finnerman' 
+	
+  end
+  scenario "user is not able to change their email" do
+    user = FactoryGirl.create(:user, name: "Noah Finnerman", email: "nono@gmail.com", password: "toad123", password_confirmation: "toad123" )
+    visit '/login'
+    fill_in 'email_field' , with: 'nono@gmail.com'
+	  fill_in 'password_field', with: "toad123"
+	  click_button 'Sign in'
+    find('#edit-account', :text => 'Edit Account').click
 
+	  fill_in 'name_edit', with: 'nono'
+	  fill_in 'email_edit' , with: 'yoyo@gmail.com'
+	  fill_in 'password_edit', with: "z2123593"
+	  fill_in 'confirm_password_edit', with: 'z2123593'
+	  click_button 'Update'
+	  expect(page).to have_content( 'Info! Your account was successfully updated')
 
+	   find('#edit-account', :text => 'Edit Account').click
+	   expect(find("#email_edit", :visible => true).value).to eq 'nono@gmail.com'
+     expect(find("#name_edit", :visible => true).value).to eq 'nono'
+   end 
+   scenario "user recives a message when they login" do
+    user = FactoryGirl.create(:user, name: "Noah Finnerman", email: "nono@gmail.com", password: "toad123", password_confirmation: "toad123" )
+    visit '/login'
+    fill_in 'email_field' , with: 'nono@gmail.com'
+	  fill_in 'password_field', with: "toad123"
+	  click_button 'Sign in'
+	  expect(page).to have_content("You are now login")
+	end
+	scenario "user recives a message when they login" do
+    user = FactoryGirl.create(:user, name: "Noah Finnerman", email: "nono@gmail.com", password: "toad123", password_confirmation: "toad123" )
+    visit '/login'
+    fill_in 'email_field' , with: 'nono@gmail.com'
+	  fill_in 'password_field', with: "toad123"
+	  click_button 'Sign in'
+	  click_link 'Settings'
+    find('#logout', :text => 'logout').click
+	  expect(page).to have_content("You are now logout")
+	end
 end

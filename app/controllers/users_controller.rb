@@ -4,13 +4,13 @@ class UsersController < ApplicationController
 	end
 
 	def create
-		user = User.new(user_params)
-		if user.save
-			session[:user_id] = user.id
+		@user = User.new(user_params)
+		if @user.save
+			session[:user_id] = @user.id
 			flash[:notice] = "Your account was successfuly created"
 			redirect_to '/posts'
 		else 
-			flash[:notice] = user.errors.full_messages[0]
+			flash[:notice] = @user.errors.full_messages[0]
 			# flash[:notice] = "Passwords did not match" 
   
 			redirect_to '/'

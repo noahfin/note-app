@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
 	has_secure_password
+	attr_readonly :email
 	validates :email, presence: true
 	validates :email,
             :uniqueness => true

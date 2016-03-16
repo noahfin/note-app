@@ -1,0 +1,16 @@
+<%= bootstrap_form_for :user, :html => { :method=> "PATCH"}, url: '/users/edit'  do |f| %>
+          <% if current_user %>
+            <%= f.text_field :name,autofocus: true, placeholder: 'Name', value: current_user.name, hide_label: true, id:"name_edit"  %>
+            <%= f.text_field :email,  placeholder: 'Password',value: current_user.email, hide_label: true , id:"email_edit" %>
+            <%= f.password_field :password,  placeholder: 'Enter the password you want to use' , hide_label: true, id:"password_edit"  %> 
+            <%= f.password_field :password_confirmation,  placeholder: 'Password confirmation', hide_label: true, id:"confirm_password_edit" %>
+          
+           <%else%>
+
+            <%= f.text_field :name,autofocus: true, placeholder: 'Name', hide_label: true, id:"name_edit"  %>        
+            <%= f.text_field :email,  placeholder: 'Email', hide_label: true , id:"email_edit" %>
+            <%= f.password_field :password,  placeholder: 'Enter the password you want to use' , hide_label: true, id:"password_edit"  %> 
+            <%= f.password_field :password_confirmation,  placeholder: 'Password confirmation', hide_label: true, id:"confirm_password_edit" %>
+          <% end %>
+          <%= f.submit "Update", class: " btn btn-info" %>
+        <% end %>

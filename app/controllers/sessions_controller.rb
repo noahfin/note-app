@@ -6,7 +6,8 @@ class SessionsController < ApplicationController
       # Save the user id inside the browser cookie. This is how we keep the user 
       # logged in when they navigate around our website.
       session[:user_id] = user.id
-      redirect_to '/'
+      flash[:notice] = "You are now login"
+      redirect_to '/posts'
     else
     # If user's login doesn't work, send them back to the login form.
      flash[:notice] = 'Invalid email/password combination'
@@ -16,6 +17,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
+    flash[:notice] = "You are now logout"
     redirect_to '/login'
   end
 end
