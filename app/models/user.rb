@@ -10,4 +10,6 @@ class User < ActiveRecord::Base
   validates :password, confirmation: true,  length: { minimum: 6 }
   validates :password_confirmation, presence: true
   has_many :posts
+  has_many :folders
+
 end

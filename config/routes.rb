@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
   get 'home' => 'home#index'
 
+  resources :folders
   resources :posts
 
   # The priority is based upon order of creation: first created -> highest priority.

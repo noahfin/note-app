@@ -2,7 +2,7 @@
   before(:all) do
       user = create(:user, name: "Noah Finnerman", email: "nono@gmail.com", password: "toad123", password_confirmation: "toad123" )
 
-  end
+ 
   def login 
   	visit '/login'
     fill_in 'email_field' , with: 'nono@gmail.com'
@@ -51,15 +51,25 @@
     visit '/home'
     expect(page).not_to have_content("First post")
 
+   end
 
-  	
-
-
-
-	  
+   it "allows a user to add a folder" do
+    login
+    visit '/home'
+    expect(page).not_to have_content("Listing posts")
+    click_link('folder')
+    # find(".dropdown").find(".fo-o").click
+    # Capybara.page.find('.fa-folder-o').click
+     click_link 'New folder'
+     fill_in 'folder_name', with: "Ruby"
+     click_button 'Add'
+    
+    # find('input[name="commit"]').click
+  
+    expect(page).not_to have_content("your folder was successfuly added")
 
 
    end
 
-
+ end
 end

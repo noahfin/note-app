@@ -2,7 +2,30 @@
       <img class="user-avater" src="<%= gravatar_url if current_user %>"  title="source: imgur.com" alt="user avater" height="40" width="40">
 
   <ul>
-    <li><a href="#" class=""><i class="fa fa-folder-o"></i></a></li>
+    <li>
+       <div class="dropdown folder">
+<!--          <a class="email-link" href="/contact"><i class="fa fa-envelope"></i></a>
+ -->        <a href="#" id="folder" class=" dropdown-toggle " type="button" data-toggle="dropdown"><i id="folder-o" class="fa fo-o fa-folder-o"></i></a>  
+         <ul class="dropdown-menu">
+          <li class="dropdown-header"> <a data-toggle="modal" data-target="#new-folder">
+          <span class="glyphicon glyphicon-plus"></span>New folder
+        </a>
+          </li>
+          <li><a href="#">
+          <span class="fa fa-folder-o">HTML</span>
+        </a></li> 
+          <li><a href="#">
+          <span class="fa fa-folder-o">CSS</span>
+        </a></li>
+          <li><a href="#">
+          <span class="fa fa-folder-o">JAVASCRIPT</span>
+        </a></li>
+          <li class="divider"></li>
+          <li class="dropdown-header">Dropdown header 2</li>
+          <li><a href="#">About Us</a></li>
+        </ul>
+  </div>
+    </li>
      <li><a href="#" class=""><i class="fa fa-pencil-square-o"></i></a></li>
     <li><a href="#" class=""><i class="fa fa-picture-o"></i></a></li>
     <li><a href="#" class=""><i class="fa fa-search"></i></i></a></li>
@@ -72,5 +95,31 @@
         </div>
       </div>
       
+    </div>
+  </div>
+
+
+  <!-- Trigger the modal with a button -->
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="new-folder" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Folder Name</h4>
+        </div>
+        <div class="modal-body">
+          <%= bootstrap_form_for(@folder) do |f| %>
+          <%= f.text_field :name%>
+          
+          <%= f.submit "Add", class: " btn btn-default" %>
+        <% end %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
     </div>
   </div>

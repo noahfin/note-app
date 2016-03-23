@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
       # logged in when they navigate around our website.
       session[:user_id] = user.id
       flash[:notice] = "You are now login"
-      redirect_to '/posts'
+      redirect_to '/home'
     else
     # If user's login doesn't work, send them back to the login form.
      flash[:notice] = 'Invalid email/password combination'
