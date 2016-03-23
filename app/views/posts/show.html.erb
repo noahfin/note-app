@@ -1,23 +1,22 @@
  <div class= "buffer"></div>
- 	<div class="container buffer-top">
-    <%= alert_box "info", "Info!", notice if flash.any? %>
-
-    
-    </div><!-- /container -->
+<div class="container buffer-top">
+	<%= alert_box "info", "Info!", notice if flash.any? %>    
+</div><!-- /container -->
 
 <div class="container">
-
 
 <h1 class='title'>
   <%= @post.title %>
 </h1>
-
-<p>
-  <%=raw @post.content %>
-</p>
-
+	<div class="panel panel-default">
+	  <div class="panel-body">
+			<p>
+			  <%=raw @post.content %>
+			</p>
+	</div>
+	</div>
 <div class='actions'>
-<%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-default' %>
-<%= link_to 'Back', posts_path, class: 'btn btn-default' %>
+	<%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-default' %>
+	<%= link_to 'Back', posts_path, class: 'btn btn-default' %>
 </div>
 </div>

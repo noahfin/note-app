@@ -4,25 +4,24 @@
   <ul>
     <li>
        <div class="dropdown folder">
-<!--          <a class="email-link" href="/contact"><i class="fa fa-envelope"></i></a>
- -->        <a href="#" id="folder" class=" dropdown-toggle " type="button" data-toggle="dropdown"><i id="folder-o" class="fa fo-o fa-folder-o"></i></a>  
+         <a href="#" id="folder" class=" dropdown-toggle " type="button" data-toggle="dropdown"><i id="folder-o" class="fa fo-o fa-folder-o"></i>          </a>  
          <ul class="dropdown-menu">
-          <li class="dropdown-header"> <a data-toggle="modal" data-target="#new-folder">
+          <li  id="add-folder" class="dropdown-header"> <a data-toggle="modal" data-target="#new-folder">
           <span class="glyphicon glyphicon-plus"></span>New folder
-        </a>
-          </li>
-          <li><a href="#">
-          <span class="fa fa-folder-o">HTML</span>
-        </a></li> 
-          <li><a href="#">
-          <span class="fa fa-folder-o">CSS</span>
-        </a></li>
-          <li><a href="#">
-          <span class="fa fa-folder-o">JAVASCRIPT</span>
-        </a></li>
-          <li class="divider"></li>
-          <li class="dropdown-header">Dropdown header 2</li>
-          <li><a href="#">About Us</a></li>
+          </a>
+            </li>
+            <li><a href="#">
+            <span class="fa fa-folder-o">HTML</span>
+            </a></li> 
+            <li><a href="#">
+            <span class="fa fa-folder-o">CSS</span>
+            </a></li>
+            <li><a href="#">
+            <span class="fa fa-folder-o">JAVASCRIPT</span>
+            </a></li>
+            <li class="divider"></li>
+            <li class="dropdown-header">Dropdown header 2</li>
+            <li><a href="#">About Us</a></li>
         </ul>
   </div>
     </li>
@@ -32,14 +31,12 @@
   </ul>
 </nav>
     <div class="container buffer-top">
-    <%= alert_box "info", "Info!", notice if flash.any? %>
-
-    
+    <%= alert_box "info", "Info!", notice if flash.any? %>    
     </div><!-- /container -->
 <div class="container-small">
-
 <h2 class="color-p">Listing posts</h2>
-
+  <div class="panel panel-default">
+    <div class="panel-body">
 <table class="table">
   <thead>
     <tr>
@@ -49,25 +46,26 @@
   </thead>
 
   <tbody>
-  <% if @posts.any? %>
-    <% @posts.each do |post| %>
+
+    <% if @posts.any? %>
+      <% @posts.each do |post| %>
+        <tr>
+          <td class="color-header"><%= post.title %></td>
+          <td>
+            <%= link_to fa_icon('eye'), post %> |
+            <%= link_to fa_icon('edit'), edit_post_path(post) %> |
+            <%= link_to fa_icon('close'), post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    <% else %>
       <tr>
-        <td class="color-header"><%= post.title %></td>
-        <td>
-          <%= link_to fa_icon('eye'), post %> |
-          <%= link_to fa_icon('edit'), edit_post_path(post) %> |
-          <%= link_to fa_icon('close'), post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td colspan="2" style='background-color: #eaeaea;height:5em;line-height:5em;text-align:center;'>No entries</td>
       </tr>
     <% end %>
-  <% else %>
-    <tr>
-      <td colspan="2" style='background-color: #eaeaea;height:5em;line-height:5em;text-align:center;'>No entries</td>
-    </tr>
-  <% end %>
-
-  </tbody>
+    </tbody>
 </table>
-
+  </div>
+</div>
 <br>
 
   <button type="button" class="btn btn-posts btn-md btn-left" data-toggle="modal" data-target="#myModal">New Post</button>
@@ -84,23 +82,19 @@
           <h4 class="modal-title">Save Note As</h4>
         </div>
         <div class="modal-body">
-        <%= bootstrap_form_for(@post) do |f| %>
-          <%= f.text_field :title%>
-        
+          <%= bootstrap_form_for(@post) do |f| %>
+            <%= f.text_field :title%>        
           <%= f.submit "Submit", class: " btn btn-default" %>
         <% end %>
         </div>
         <div class="modal-footer">
-         
         </div>
       </div>
-      
     </div>
   </div>
 
 
   <!-- Trigger the modal with a button -->
-
 
   <!-- Modal -->
   <div class="modal fade" id="new-folder" role="dialog">
